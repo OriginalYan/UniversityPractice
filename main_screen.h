@@ -8,18 +8,11 @@
 
 using namespace std;
 
-enum Type {
-    FEDERAL, REGIONAL
-};
-
 struct PTY {
-    string Name; 
-    string Adress; 
-    Type type; 
-    int Foundation_Year; 
-    int License_Number; 
-    int Accreditation_Number; 
-    string Accreditation_End_Date; 
+    string Coordinates;  
+    string type; 
+    string Okrug; 
+    int Year; 
 };
 
 class MainScreen {

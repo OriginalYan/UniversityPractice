@@ -50,32 +50,22 @@ void MainScreen::choose(const string& code) {
 
 void MainScreen::navigateToAdd() {
     PTY element; 
-    string type; 
-    cout << "Введите название" << endl; 
-    cin >> element.Name;
-    cout << "Введите адрес" << endl; 
-    cin >> element.Adress;
-    cout << "Введите тип" << endl;
-    cin >> type; 
-    if (type == "Федеральный") {
-        element.type = FEDERAL;
-    } else if (type == "Региональный") {
-        element.type = REGIONAL;
+    cout << "Введите GPS - Координаты" << endl; 
+    cin >> element.Coordinates;
+    cout << "Вид дерева: 1 - малое, 2 - большое" << endl; 
+    cin >> element.type; 
+    if (element.type == "1"){
+        element.type = "Малое";
+    } else if(element.type == "2"){
+        element.type = "Большое";
     } else {
-        cout << "Такого типа нет." << endl;
-        return;
+        element.type = "Тип не распознан";
     }
-    cout << "Введите год основания" << endl;
-    cin >> element.Foundation_Year;
- 
+    cout << "Введите округ" << endl;
+    cin >> element.Okrug;
     cout << "Введите номер лицензии" << endl;
-    cin >> element.License_Number;
-          
-    cout << "Введите номер аккредитации" << endl; 
-    cin >> element.Accreditation_Number;
-
-    cout << "Введите дату окончания аккредитации" << endl;
-    cin >> element.Accreditation_End_Date;
+    cin >> element.Year;
+    cout << "Данные добавлны" << endl;
     dataPush(element);
 } 
 
@@ -101,37 +91,31 @@ void MainScreen::navigateToDelete() {
 
 void MainScreen::navigateToEdit() {
     int code = -1;
-    string type; 
     cout << "Введите номер редактируемой записи" << endl;
     cin >> code;
+
     PTY element;
-    cout << "Введите новое название" << endl;
-    cin >> element.Name;
-    cout << "Введите новый адрес" << endl;
-    cin >> element.Adress;
+    cout << "Введите новые координаты" << endl;
+    cin >> element.Coordinates;
     cout << "Введите новый тип" << endl;
-    cin >> type; 
-    if (type == "Федеральный") {
-        element.type = FEDERAL;
-    } else if (type == "Региональный") {
-        element.type = REGIONAL;
+    cin >> element.type; 
+    if (element.type == "1"){
+        element.type = "Малое";
+    } else if(element.type == "2"){
+        element.type = "Большое";
     } else {
-        cout << "Такого типа нет." << endl;
-        return;
+        element.type = "Тип не распознан";
     }
-    cout << "Введите новый год основания" << endl;
-    cin >> element.Foundation_Year;
-    cout << "Введите новый номер лицензии" << endl;
-    cin >> element.License_Number;
-    cout << "Введите новый номер аккредитации" << endl;
-    cin >> element.Accreditation_Number;
-    cout << "Введите новую дату окончания аккредитации" << endl;
-    cin >> element.Accreditation_End_Date;
+    cout << "Введите новый округ" << endl;
+    cin >> element.Okrug;
+    cout << "Введите новый год" << endl;
+    cin >> element.Year;
+
     dataEditByID(code, element);
 }
 void MainScreen::navigateToView() {
     for (int i = 0; i < this->data.size(); i++) {
-        cout << i << ": "<< this->data.at(i).Name << " " << this->data.at(i).Adress << " " << this->data.at(i).type << " " << this->data.at(i).Foundation_Year << " " << this->data.at(i).License_Number << " " << this->data.at(i).Accreditation_Number << " " << this->data.at(i).Accreditation_End_Date << endl;
+        cout << i << ": "<< this->data.at(i).Coordinates << " " << this->data.at(i).type << " " << this->data.at(i).type << " " << this->data.at(i).Okrug << " " << this->data.at(i).Year << endl;
     }
 }
 
