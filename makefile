@@ -8,7 +8,7 @@ clear.o:
 	g++ -c ./src/clear.cpp
 pr2.o:
 	g++ -c ./src/pr2.cpp
-	
+
 test: test.o
 	g++ test.o -o test	
 test.o:
